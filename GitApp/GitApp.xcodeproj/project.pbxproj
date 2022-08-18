@@ -15,7 +15,10 @@
 		339A844028ABCAA900801DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 339A843F28ABCAA900801DE5 /* Assets.xcassets */; };
 		339A844328ABCAA900801DE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 339A844128ABCAA900801DE5 /* LaunchScreen.storyboard */; };
 		33A7E64028AE068A0011BB9E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7E63F28AE068A0011BB9E /* UIColor.swift */; };
-		33A7E64228AE27590011BB9E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7E64128AE27590011BB9E /* UIImageView.swift */; };
+		33A7E64628AE630D0011BB9E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7E64528AE630D0011BB9E /* Color.swift */; };
+		33A7E64828AE63E60011BB9E /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7E64728AE63E60011BB9E /* Font.swift */; };
+		33A7E64C28AE6C050011BB9E /* GithubOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7E64B28AE6C050011BB9E /* GithubOwner.swift */; };
+		33A7E64E28AE70270011BB9E /* GitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7E64D28AE70270011BB9E /* GitListView.swift */; };
 		33B23EC428AD85A800B569DC /* Gilroy-UltraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33B23EB028AD85A800B569DC /* Gilroy-UltraLightItalic.ttf */; };
 		33B23EC528AD85A800B569DC /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33B23EB128AD85A800B569DC /* Gilroy-Medium.ttf */; };
 		33B23EC628AD85A800B569DC /* Gilroy-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33B23EB228AD85A800B569DC /* Gilroy-LightItalic.ttf */; };
@@ -74,7 +77,10 @@
 		339A844228ABCAA900801DE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		339A844428ABCAA900801DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33A7E63F28AE068A0011BB9E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		33A7E64128AE27590011BB9E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		33A7E64528AE630D0011BB9E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		33A7E64728AE63E60011BB9E /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		33A7E64B28AE6C050011BB9E /* GithubOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubOwner.swift; sourceTree = "<group>"; };
+		33A7E64D28AE70270011BB9E /* GitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitListView.swift; sourceTree = "<group>"; };
 		33B23EB028AD85A800B569DC /* Gilroy-UltraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-UltraLightItalic.ttf"; sourceTree = "<group>"; };
 		33B23EB128AD85A800B569DC /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.ttf"; sourceTree = "<group>"; };
 		33B23EB228AD85A800B569DC /* Gilroy-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 		339A843528ABCAA800801DE5 /* GitApp */ = {
 			isa = PBXGroup;
 			children = (
+				33A7E64428AE63000011BB9E /* Globals */,
 				33A7E63E28AE06650011BB9E /* Extensions */,
 				33E2FBA628AD319F00DD32B7 /* Fonts */,
 				33E2FBA228ACDB9800DD32B7 /* Views */,
@@ -195,9 +202,17 @@
 			isa = PBXGroup;
 			children = (
 				33A7E63F28AE068A0011BB9E /* UIColor.swift */,
-				33A7E64128AE27590011BB9E /* UIImageView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		33A7E64428AE63000011BB9E /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				33A7E64528AE630D0011BB9E /* Color.swift */,
+				33A7E64728AE63E60011BB9E /* Font.swift */,
+			);
+			path = Globals;
 			sourceTree = "<group>";
 		};
 		33B23EAF28AD85A800B569DC /* Fonts */ = {
@@ -275,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				33E2FB9F28ACD0B400DD32B7 /* GithubRepository.swift */,
+				33A7E64B28AE6C050011BB9E /* GithubOwner.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				33E2FBA328ACDBA000DD32B7 /* TableViewCells */,
+				33A7E64D28AE70270011BB9E /* GitListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -469,14 +486,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33A7E64228AE27590011BB9E /* UIImageView.swift in Sources */,
 				339A843B28ABCAA800801DE5 /* ViewController.swift in Sources */,
+				33A7E64E28AE70270011BB9E /* GitListView.swift in Sources */,
+				33A7E64828AE63E60011BB9E /* Font.swift in Sources */,
 				33A7E64028AE068A0011BB9E /* UIColor.swift in Sources */,
 				339A843728ABCAA800801DE5 /* AppDelegate.swift in Sources */,
 				33E2FBA528ACE42000DD32B7 /* GitTableViewCell.swift in Sources */,
 				33E2FBA028ACD0B400DD32B7 /* GithubRepository.swift in Sources */,
+				33A7E64C28AE6C050011BB9E /* GithubOwner.swift in Sources */,
 				33E2FB9B28ACCE9F00DD32B7 /* EndPoints.swift in Sources */,
 				339A843928ABCAA800801DE5 /* SceneDelegate.swift in Sources */,
+				33A7E64628AE630D0011BB9E /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 import UIKit
 
 class GitTableViewCell: UITableViewCell {
+    //MARK: Outlets
     @IBOutlet var backImageView: UIImageView!
     @IBOutlet var languageLabel: UILabel!
     @IBOutlet var avatorImageView: UIImageView!
@@ -23,29 +24,30 @@ class GitTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let whiteColor = CGColor(red: 255, green: 255, blue: 255, alpha: 1)
-        let grayColor = UIColor(rgb: 0xF8F8F8)
-        let borderColor = UIColor(red: 00, green: 227, blue: 230, alpha: 1)
+        cellStyling()
+    }
+    
+    //MARK: CellCustomStyling
+    private func cellStyling() {
         mainView.clipsToBounds = true
+        languageLabel.font = Font.gilroyMedium(12)
+        ownerNameLabel.font = Font.gilroyMedium(16)
+        descriptionLabel.font = Font.gilroyMedium(12)
+        countLabel.font = Font.gilroyMedium(12)
+        contributionLabel.font = Font.gilroyMedium(12)
         mainView.layer.cornerRadius = 15
         mainView.layer.borderWidth = 1
         backImageView.layer.borderWidth = 1
-        backImageView.layer.borderColor = borderColor.cgColor
-        mainView.layer.borderColor = borderColor.cgColor
+        backImageView.layer.borderColor = Color.borderColor.cgColor
+        mainView.layer.borderColor = Color.borderColor.cgColor
         avatorView.layer.cornerRadius = 8
         avatorImageView.layer.borderWidth = 2
         avatorImageView.layer.cornerRadius = 8
         countView.layer.cornerRadius = 6
-        countView.backgroundColor = grayColor
-        contributionView.backgroundColor = grayColor
-        avatorImageView.layer.borderColor = whiteColor
+        countView.backgroundColor = Color.grayColor
+        contributionView.backgroundColor = Color.grayColor
+        avatorImageView.layer.borderColor = Color.whiteColor.cgColor
         languageLabelView.layer.cornerRadius = 6
         contributionView.layer.cornerRadius = 6
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-
 }

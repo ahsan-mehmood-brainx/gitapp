@@ -11,19 +11,14 @@ import ObjectMapper
 struct GitApiResponse: Mappable {
     var name: String?
     var fullName: String?
+    var id: Int?
     init?(map: Map) {
     }
     mutating func mapping(map: Map) {
         name <- map["name"]
         fullName <- map["full_name"]
+        id <- map["id"]
     }
 }
-struct Owner: Mappable {
-    var avatorUrl: String?
-    init?(map: Map) {
-    }
-    mutating func mapping(map: Map) {
-        avatorUrl <- map["avatar_url"]
-    }
-}
+
 
