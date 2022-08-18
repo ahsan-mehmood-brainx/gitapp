@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "813AD3FC-CCDE-499A-BB73-7E744710B11E"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E52688F-283E-4A6B-B6C7-C9B7B5830AAB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitApp/Views/TableViewCells/GitTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "GitTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "5E52688F-283E-4A6B-B6C7-C9B7B5830AAB - 7d98349bee111407"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.descriptionLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "94">
+               </Location>
+               <Location
+                  uuid = "5E52688F-283E-4A6B-B6C7-C9B7B5830AAB - 5b26c0a8527a70f3"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.descriptionLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "5E52688F-283E-4A6B-B6C7-C9B7B5830AAB - 5139b044a73091f3"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.descriptionLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  uuid = "5E52688F-283E-4A6B-B6C7-C9B7B5830AAB - a95f0c3aff8d1662"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.descriptionLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  uuid = "5E52688F-283E-4A6B-B6C7-C9B7B5830AAB - 68e2a341985c861f"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; GitApp.GitTableViewCell"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "327">
+               </Location>
+               <Location
+                  uuid = "5E52688F-283E-4A6B-B6C7-C9B7B5830AAB - 58e273fbb6e714ff"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GitApp.GitTableViewCell&gt;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "284">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96C07428-7B48-4FC8-A151-E3FC2FD7A539"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitApp/Views/TableViewCells/GitTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "GitTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "96C07428-7B48-4FC8-A151-E3FC2FD7A539 - 9968177558e61cd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.mainView.getter : Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "94">
+               </Location>
+               <Location
+                  uuid = "96C07428-7B48-4FC8-A151-E3FC2FD7A539 - 9491a896980f641e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.mainView.setter : Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "96C07428-7B48-4FC8-A151-E3FC2FD7A539 - 230ae98b12f46b4d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.mainView.modify : Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  uuid = "96C07428-7B48-4FC8-A151-E3FC2FD7A539 - ff498347e38fef1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.mainView.modify : Swift.Optional&lt;__C.UIView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  uuid = "96C07428-7B48-4FC8-A151-E3FC2FD7A539 - 68e2a341985c86bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; GitApp.GitTableViewCell"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "402">
+               </Location>
+               <Location
+                  uuid = "96C07428-7B48-4FC8-A151-E3FC2FD7A539 - 58e273fbb6e7145c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitApp.GitTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GitApp.GitTableViewCell&gt;"
+                  moduleName = "GitApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brainx3096/Desktop/Github/gitapp/GitApp/GitApp/Views/TableViewCells/GitTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "359">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
