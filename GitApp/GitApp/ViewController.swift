@@ -5,7 +5,6 @@
 //  Created by BrainX 3096 on 21/08/2022.
 //
 
-
 import UIKit
 
 class GitMainController: UIViewController {
@@ -14,6 +13,7 @@ class GitMainController: UIViewController {
     //MARK: Private variable having gitapiresponse
     var gitResponse = [GitApiResponse]()
     var gitOwner: GithubOwner?
+
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +56,5 @@ extension GitMainController: UITableViewDataSource {
         return gitResponse.count
     }
 }
-
 
 
