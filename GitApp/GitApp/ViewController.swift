@@ -2,18 +2,23 @@
 //  ViewController.swift
 //  GitApp
 //
-//  Created by BrainX 3096 on 16/08/2022.
+//  Created by BrainX 3096 on 21/08/2022.
 //
+
 
 import UIKit
 
 class GitMainController: UIViewController {
     //MARK: Outlets
     @IBOutlet var gitMainScreen: GitListView!
+    //MARK: Private variable having gitapiresponse
+    var gitResponse = [GitApiResponse]()
+    var gitOwner: GithubOwner?
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        loadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,15 +40,22 @@ class GitMainController: UIViewController {
 extension GitMainController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GitTableViewCell", for: indexPath) as! GitTableViewCell
+        let id: Int = gitResponse[indexPath.row].gitOwner?.gitOwnerId ?? 0
+        let avatorImageString: String =  gitResponse[indexPath.row].gitOwner?.avatorUrl ?? "N/A"
+        let avatorImageUrl = URL(string: avatorImageString)
+        cell.avatorImageView.load(url: avatorImageUrl!)
         cell.languageLabel.text = "English"
-        cell.ownerNameLabel.text = "Ahsan"
-        cell.descriptionLabel.text = "description"
-        cell.countLabel.text = String(26) + " count"
-        cell.contributionLabel.text = String(100) + " contribution"
+        cell.ownerNameLabel.text = gitResponse[indexPath.row].name ?? "N/A"
+        cell.descriptionLabel.text = gitResponse[indexPath.row].fullName ?? "N/A"
+        cell.countLabel.text = String(gitResponse[indexPath.row].id!) + " count"
+        cell.contributionLabel.text = String(id) + " contributions"
+        print("ABCDEF")
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return gitResponse.count
     }
 }
+
+
 

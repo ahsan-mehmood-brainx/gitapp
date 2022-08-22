@@ -11,5 +11,7 @@ class Font {
     static func gilroyMedium(_ size: Double)-> UIFont? {
         return UIFont(name: "Gilroy-Medium", size: size)
     }
-    
+    static func gilroySemiBold(_ size: Double)-> UIFont? {
+        return UIFont(name: "Gilroy-SemiBold", size: size)
+    }
 }

@@ -10,11 +10,13 @@ import ObjectMapper
 
 struct GithubOwner: Mappable {
     var avatorUrl: String?
-    var id: Int?
+    var gitOwnerId: Int?
+    var trying: String?
     init?(map: Map) {
     }
     mutating func mapping(map: Map) {
         avatorUrl <- map["avatar_url"]
-        id <- map["id"]
+        gitOwnerId <- map["id"]
+        trying <- map["login"]
     }
 }
