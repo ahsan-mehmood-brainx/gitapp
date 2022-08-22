@@ -8,5 +8,5 @@
 import UIKit
 
 class FilterViewController: UIViewController {
-    
+    @IBOutlet var filterView: FilterView!
 }

@@ -1,11 +1,13 @@
 //
-//  ViewController.swift
+//  GitMainController.swift
 //  GitApp
 //
-//  Created by BrainX 3096 on 21/08/2022.
+//  Created by BrainX 3096 on 22/08/2022.
 //
 
 import UIKit
+import Alamofire
+import ObjectMapper
 
 class GitMainController: UIViewController {
     //MARK: Outlets
@@ -13,7 +15,6 @@ class GitMainController: UIViewController {
     //MARK: Private variable having gitapiresponse
     var gitResponse = [GitApiResponse]()
     var gitOwner: GithubOwner?
-
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,6 @@ extension GitMainController: UITableViewDataSource {
         cell.descriptionLabel.text = gitResponse[indexPath.row].fullName ?? "N/A"
         cell.countLabel.text = String(gitResponse[indexPath.row].id!) + " count"
         cell.contributionLabel.text = String(id) + " contributions"
-        print("ABCDEF")
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,4 +57,41 @@ extension GitMainController: UITableViewDataSource {
     }
 }
 
+extension GitMainController {
+    func loadData() {
+        AF.request(EndPoints.urlString).responseJSON { response in
+            switch (response.result) {
+            case let .success(data):
+                let tempData = data as! [Any]
+                self.gitResponse = Mapper<GitApiResponse>().mapArray(JSONObject:tempData) ?? []
+                self.gitMainScreen.gitListView.reloadData()
+            case .failure:
+                break
+            }
+            
+        }
+    }
+}
+/*
+ //
+ //  ViewController.swift
+ //  GitApp
+ //
+ //  Created by BrainX 3096 on 21/08/2022.
+ //
+
+ import UIKit
+
+ class abc: UIViewController {
+     //MARK: Outlets
+     @IBOutlet var gitMainScreen: GitListView!
+     //MARK: Private variable having gitapiresponse
+     var gitResponse = [GitApiResponse]()
+     var gitOwner: GithubOwner?
+
+     
+
+
+
+ */
 

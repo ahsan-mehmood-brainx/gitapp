@@ -16,7 +16,7 @@
         <!--Git Main Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="GitListController" id="BYZ-38-t0r" customClass="GitMainController" customModule="GitApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GitListController" id="BYZ-38-t0r" customClass="GitMainController" customModule="GitApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GitListView" customModule="GitApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,7 +242,7 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="gitMainScreen" destination="8bC-Xf-vdC" id="l49-P4-fHN"/>
+                        <outlet property="gitMainScreen" destination="8bC-Xf-vdC" id="12k-6N-6PZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -351,6 +351,9 @@
                             <outlet property="languageTableView" destination="Qgr-zq-u1e" id="jU4-uR-X8i"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="filterView" destination="T0d-Y0-kfD" id="Gic-NJ-DEW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCj-BZ-eVb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="DMy-VK-gYi" userLabel="Exit" sceneMemberID="exit"/>
@@ -359,7 +362,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backImage" width="78" height="78"/>
+        <image name="backImage" width="327" height="159"/>
         <image name="icon" width="40" height="40"/>
         <image name="next" width="6" height="10.5"/>
         <image name="pakitsan" width="640" height="426.5"/>
