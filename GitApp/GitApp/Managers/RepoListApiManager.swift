@@ -12,7 +12,7 @@ import ObjectMapper
 typealias RepoApiResult = Result<[GitRepository], APIError>
 
 class RepoListApiManager {
-     func loadRepositories(withCompletion completion: @escaping (RepoApiResult) {
+     func loadRepositories(withCompletion completion: @escaping (RepoApiResult) -> Void) {
         APIManager.shared.performRequest(RepoListRequest.fetchRequest) { result in
             switch result {
             case let .success(value):
@@ -27,7 +27,6 @@ class RepoListApiManager {
         }
     }
 }
-
 enum RepoListRequest:HTTPRequest {
     case fetchRequest
     var endPoint: URL? {
