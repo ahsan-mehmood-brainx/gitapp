@@ -8,6 +8,7 @@
 import UIKit
 
 class GitTableViewCell: UITableViewCell {
+    
     //MARK: Outlets
     @IBOutlet var backImageView: UIImageView!
     @IBOutlet var languageLabel: UILabel!
@@ -22,6 +23,7 @@ class GitTableViewCell: UITableViewCell {
     @IBOutlet var countView: UIView!
     @IBOutlet var contributionView: UIView!
     
+    //MARK: Lifecycle Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         cellStyling()
@@ -49,5 +51,18 @@ class GitTableViewCell: UITableViewCell {
         avatorImageView.layer.borderColor = Color.whiteColor.cgColor
         languageLabelView.layer.cornerRadius = 6
         contributionView.layer.cornerRadius = 6
+    }
+    
+    //MARK: Public Method
+    func setCellData(_ gitRepository: GitRepository) {
+        let id: Int = gitRepository.gitOwner?.gitOwnerId ?? 0
+        let avatorImageString: String =  gitRepository.gitOwner?.avatorUrl ?? CustomStrings.repoLanguage
+        let avatorImageUrl = URL(string: avatorImageString)
+        avatorImageView.load(url: avatorImageUrl!)
+        languageLabel.text = CustomStrings.repoLanguage
+        ownerNameLabel.text = gitRepository.name ?? CustomStrings.notAvailable
+        descriptionLabel.text = gitRepository.fullName ?? CustomStrings.notAvailable
+        countLabel.text = String(gitRepository.id!) + CustomStrings.count
+        contributionLabel.text = String(id) + CustomStrings.contribution
     }
 }

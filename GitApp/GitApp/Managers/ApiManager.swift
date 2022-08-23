@@ -9,11 +9,8 @@ import Foundation
 import Alamofire
 
 protocol HTTPRequest {
-    
     var endPoint: URL? { get }
-    
     var method: HTTPMethod { get }
-    
 }
 
 typealias APIClientResult = Result<Any, APIError>
@@ -27,7 +24,8 @@ class APIManager {
     private init() {}
     
     // MARK: Public Methods
-    func performRequest(_ request: HTTPRequest, withCompletion completion: @escaping (APIClientResult) -> Void) {
+    func performRequest(_ request: HTTPRequest,
+                        withCompletion completion: @escaping (APIClientResult) -> Void) {
         guard let url = request.endPoint else {
             completion(.failure(APIError(message: CustomStrings.urlNotFound)))
             return

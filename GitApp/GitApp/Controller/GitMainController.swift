@@ -5,16 +5,19 @@
 //  Created by BrainX 3096 on 22/08/2022.
 //
 
-import UIKit
 import Alamofire
 import ObjectMapper
+import UIKit
 
 class GitMainController: BaseViewController {
+    
     //MARK: Outlets
     @IBOutlet var gitMainScreen: GitListView!
-    //MARK: Private variable having gitapiresponse
-    let repoListRequest = RepoListApiManager()
-    var gitRepositories = [GitRepository]()
+    
+    //MARK: Private Members
+    private let repoListRequest = RepoListApiManager()
+    private var gitRepositories = [GitRepository]()
+    
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +32,7 @@ class GitMainController: BaseViewController {
         searchBarStyle?.textColor = Color.searchBarTextColor
     }
     
-    //MARK: Fetching data (Private Function)
+    //MARK: Private Methods
     private func fetchData() {
         repoListRequest.loadRepositories {response in
             switch response {
@@ -43,19 +46,11 @@ class GitMainController: BaseViewController {
     }
 }
 
-    //MARK: Conformance to Protocol
+    //MARK: UITableViewDataSource Methods
 extension GitMainController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GitTableViewCell", for: indexPath) as! GitTableViewCell
-        let id: Int = gitRepositories[indexPath.row].gitOwner?.gitOwnerId ?? 0
-        let avatorImageString: String =  gitRepositories[indexPath.row].gitOwner?.avatorUrl ?? CustomStrings.repoLanguage
-        let avatorImageUrl = URL(string: avatorImageString)
-        cell.avatorImageView.load(url: avatorImageUrl!)
-        cell.languageLabel.text = CustomStrings.repoLanguage
-        cell.ownerNameLabel.text = gitRepositories[indexPath.row].name ?? CustomStrings.notAvailable
-        cell.descriptionLabel.text = gitRepositories[indexPath.row].fullName ?? CustomStrings.notAvailable
-        cell.countLabel.text = String(gitRepositories[indexPath.row].id!) + CustomStrings.count
-        cell.contributionLabel.text = String(id) + CustomStrings.contribution
+        cell.setCellData(gitRepositories[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

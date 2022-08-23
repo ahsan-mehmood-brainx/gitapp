@@ -8,6 +8,7 @@
 import UIKit
 
 class GitListView: UIView {
+    
     //MARK: Outlets
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var gitListView: UITableView!
@@ -15,7 +16,8 @@ class GitListView: UIView {
         super.awakeFromNib()
         initialSetup()
     }
-    //MARK: Private function 
+    
+    //MARK: Private Method
     private func initialSetup() {
         searchBar.searchBarStyle = .minimal
         gitListView.separatorColor = .clear

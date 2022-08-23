@@ -8,7 +8,8 @@
 import UIKit
 
 class LanguagesTableViewCell: UITableViewCell {
+    
+    //MARK: Outlets
     @IBOutlet var languageButton: UIButton!
     @IBOutlet var languageLabelView: UILabel!
-    
 }
