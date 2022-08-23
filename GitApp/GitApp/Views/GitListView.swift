@@ -15,6 +15,7 @@ class GitListView: UIView {
         super.awakeFromNib()
         initialSetup()
     }
+    //MARK: Private function 
     private func initialSetup() {
         searchBar.searchBarStyle = .minimal
         gitListView.separatorColor = .clear

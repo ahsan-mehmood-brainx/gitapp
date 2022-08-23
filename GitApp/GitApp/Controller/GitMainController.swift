@@ -41,11 +41,6 @@ class GitMainController: UIViewController {
             }
         }
     }
-    private func showAlert(_ error: APIError) {
-        let alert = UIAlertController(title:CustomStrings.errorTitle, message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: CustomStrings.dismiss, style: .cancel, handler: { action in}))
-        present(alert,animated: true)
-    }
 }
 
     //MARK: Conformance to Protocol
