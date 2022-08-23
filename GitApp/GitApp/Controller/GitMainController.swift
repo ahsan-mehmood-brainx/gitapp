@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import ObjectMapper
 
-class GitMainController: UIViewController {
+class GitMainController: BaseViewController {
     //MARK: Outlets
     @IBOutlet var gitMainScreen: GitListView!
     //MARK: Private variable having gitapiresponse

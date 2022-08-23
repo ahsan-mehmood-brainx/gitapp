@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		179157A93C6B864B085B2305 /* Pods_GitApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB5DBBD2BAB593FB4CE3BC3 /* Pods_GitApp.framework */; };
 		3307D3B628B49CB3006669BA /* LanguagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3307D3B528B49CB3006669BA /* LanguagesTableViewCell.swift */; };
-		3307D3B828B4D26B006669BA /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3307D3B728B4D26B006669BA /* UIViewController.swift */; };
+		3307D3BA28B4E2DC006669BA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3307D3B928B4E2DC006669BA /* BaseViewController.swift */; };
 		3329128028B2B32300B9BE45 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329127F28B2B32300B9BE45 /* FilterView.swift */; };
 		3329128228B3543F00B9BE45 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329128128B3543F00B9BE45 /* FilterViewController.swift */; };
 		3329128428B3562F00B9BE45 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329128328B3562F00B9BE45 /* Languages.swift */; };
@@ -79,7 +79,7 @@
 /* Begin PBXFileReference section */
 		116B5E3A0217B19E1621625D /* Pods-GitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitApp.debug.xcconfig"; path = "Target Support Files/Pods-GitApp/Pods-GitApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3307D3B528B49CB3006669BA /* LanguagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewCell.swift; sourceTree = "<group>"; };
-		3307D3B728B4D26B006669BA /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		3307D3B928B4E2DC006669BA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3329127F28B2B32300B9BE45 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3329128128B3543F00B9BE45 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		3329128328B3562F00B9BE45 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
@@ -176,6 +176,7 @@
 			children = (
 				3329128728B37B0000B9BE45 /* GitMainController.swift */,
 				3329128128B3543F00B9BE45 /* FilterViewController.swift */,
+				3307D3B928B4E2DC006669BA /* BaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,7 +243,6 @@
 			children = (
 				33A7E63F28AE068A0011BB9E /* UIColor.swift */,
 				33A4D65E28AFA9560002BDCF /* ImageView.swift */,
-				3307D3B728B4D26B006669BA /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -545,8 +545,8 @@
 				33A7E64C28AE6C050011BB9E /* GithubOwner.swift in Sources */,
 				33E2FB9B28ACCE9F00DD32B7 /* EndPoints.swift in Sources */,
 				3329128228B3543F00B9BE45 /* FilterViewController.swift in Sources */,
+				3307D3BA28B4E2DC006669BA /* BaseViewController.swift in Sources */,
 				339A843928ABCAA800801DE5 /* SceneDelegate.swift in Sources */,
-				3307D3B828B4D26B006669BA /* UIViewController.swift in Sources */,
 				33A7E64628AE630D0011BB9E /* Color.swift in Sources */,
 				3329129928B39E1700B9BE45 /* RepoListApiManager.swift in Sources */,
 				33A4D65F28AFA9560002BDCF /* ImageView.swift in Sources */,

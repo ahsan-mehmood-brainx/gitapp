@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterViewController: UIViewController {
+class FilterViewController: BaseViewController {
     //MARK: Outlet
     @IBOutlet var filterView: FilterView!
 }
