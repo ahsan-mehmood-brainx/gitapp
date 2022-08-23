@@ -18,16 +18,8 @@ class GitMainController: UIViewController {
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        repoListRequest.loadRepositories {response in
-            switch response {
-            case let .success(value):
-                self.gitRepositories = value
-                self.gitMainScreen.gitListView.reloadData()
-            case .failure:
-                break
-            }
-        }
-        initialSetup()
+        fetchData()
+        gitMainScreen.gitListView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,12 +28,18 @@ class GitMainController: UIViewController {
         gitMainScreen.searchBar.searchTextField.font = Font.gilroyMedium(14)
         searchBarStyle?.textColor = Color.searchBarTextColor
     }
-    //MARK: InitialSetup
-    private func initialSetup() {
-        gitMainScreen.gitListView.dataSource = self
-        gitMainScreen.searchBar.searchBarStyle = .minimal
-        gitMainScreen.gitListView.separatorColor = .clear
-        gitMainScreen.gitListView.allowsSelection = false
+    
+    //MARK: Fetching data (Private Function)
+    private func fetchData() {
+        repoListRequest.loadRepositories {response in
+            switch response {
+            case let .success(value):
+                self.gitRepositories = value
+                self.gitMainScreen.gitListView.reloadData()
+            case let .failure(error):
+                dump(error)
+            }
+        }
     }
 }
 

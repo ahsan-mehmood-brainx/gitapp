@@ -11,4 +11,13 @@ class GitListView: UIView {
     //MARK: Outlets
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var gitListView: UITableView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        initialSetup()
+    }
+    private func initialSetup() {
+        searchBar.searchBarStyle = .minimal
+        gitListView.separatorColor = .clear
+        gitListView.allowsSelection = false
+    }
 }
