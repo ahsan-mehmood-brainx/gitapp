@@ -13,13 +13,21 @@ class GitMainController: UIViewController {
     //MARK: Outlets
     @IBOutlet var gitMainScreen: GitListView!
     //MARK: Private variable having gitapiresponse
-    var gitResponse = [GitApiResponse]()
-    var gitOwner: GithubOwner?
+    let repoListRequest = RepoListApiManager()
+    var gitRepositories = [GitRepository]()
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        repoListRequest.loadRepositories {response in
+            switch response {
+            case let .success(value):
+                self.gitRepositories = value
+                self.gitMainScreen.gitListView.reloadData()
+            case .failure:
+                break
+            }
+        }
         initialSetup()
-        loadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,63 +43,27 @@ class GitMainController: UIViewController {
         gitMainScreen.gitListView.separatorColor = .clear
         gitMainScreen.gitListView.allowsSelection = false
     }
-    
 }
-    //MARK: Conformance to UITableViewDataSource Protocol
+
+    //MARK: Conformance to Protocol
 extension GitMainController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GitTableViewCell", for: indexPath) as! GitTableViewCell
-        let id: Int = gitResponse[indexPath.row].gitOwner?.gitOwnerId ?? 0
-        let avatorImageString: String =  gitResponse[indexPath.row].gitOwner?.avatorUrl ?? "N/A"
+        let id: Int = gitRepositories[indexPath.row].gitOwner?.gitOwnerId ?? 0
+        let avatorImageString: String =  gitRepositories[indexPath.row].gitOwner?.avatorUrl ?? CustomStrings.repoLanguage
         let avatorImageUrl = URL(string: avatorImageString)
         cell.avatorImageView.load(url: avatorImageUrl!)
-        cell.languageLabel.text = "English"
-        cell.ownerNameLabel.text = gitResponse[indexPath.row].name ?? "N/A"
-        cell.descriptionLabel.text = gitResponse[indexPath.row].fullName ?? "N/A"
-        cell.countLabel.text = String(gitResponse[indexPath.row].id!) + " count"
-        cell.contributionLabel.text = String(id) + " contributions"
+        cell.languageLabel.text = CustomStrings.repoLanguage
+        cell.ownerNameLabel.text = gitRepositories[indexPath.row].name ?? CustomStrings.notAvailable
+        cell.descriptionLabel.text = gitRepositories[indexPath.row].fullName ?? CustomStrings.notAvailable
+        cell.countLabel.text = String(gitRepositories[indexPath.row].id!) + CustomStrings.count
+        cell.contributionLabel.text = String(id) + CustomStrings.contribution
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gitResponse.count
+        return gitRepositories.count
     }
 }
 
-extension GitMainController {
-    func loadData() {
-        AF.request(EndPoints.urlString).responseJSON { response in
-            switch (response.result) {
-            case let .success(data):
-                let tempData = data as! [Any]
-                self.gitResponse = Mapper<GitApiResponse>().mapArray(JSONObject:tempData) ?? []
-                self.gitMainScreen.gitListView.reloadData()
-            case .failure:
-                break
-            }
-            
-        }
-    }
-}
-/*
- //
- //  ViewController.swift
- //  GitApp
- //
- //  Created by BrainX 3096 on 21/08/2022.
- //
 
- import UIKit
-
- class abc: UIViewController {
-     //MARK: Outlets
-     @IBOutlet var gitMainScreen: GitListView!
-     //MARK: Private variable having gitapiresponse
-     var gitResponse = [GitApiResponse]()
-     var gitOwner: GithubOwner?
-
-     
-
-
-
- */
 

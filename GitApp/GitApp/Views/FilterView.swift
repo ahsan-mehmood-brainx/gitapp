@@ -9,7 +9,9 @@ import UIKit
 
 class FilterView: UIView {
     @IBOutlet var crossButton: UIButton!
-    @IBOutlet var languageTableView: UITableView!
+    @IBOutlet var filterLabel: UILabel!
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var applyButton: UIButton!
+    @IBOutlet var languagesTableView: UITableView!
+    @IBOutlet var topView: UIView!
 }

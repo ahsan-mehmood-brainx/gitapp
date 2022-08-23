@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-struct GitApiResponse: Mappable {
+struct GitRepository: Mappable {
     var name: String?
     var fullName: String?
     var id: Int?
