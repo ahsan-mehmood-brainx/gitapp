@@ -20,7 +20,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="GitListController" id="BYZ-38-t0r" customClass="GitMainController" customModule="GitApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GitListView" customModule="GitApp" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GitTableView" customModule="GitApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -280,10 +280,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kRj-uI-nEH" secondAttribute="bottom" constant="19" id="0ma-fg-LFe"/>
                                     <constraint firstItem="kRj-uI-nEH" firstAttribute="top" secondItem="f7x-87-nM5" secondAttribute="top" constant="5" id="V5G-aS-oSt"/>
                                     <constraint firstItem="gxU-jd-oyW" firstAttribute="top" secondItem="f7x-87-nM5" secondAttribute="top" id="VhA-Zf-fz0"/>
                                     <constraint firstAttribute="bottom" secondItem="kRj-uI-nEH" secondAttribute="bottom" constant="19" id="eT3-Ic-BVr"/>
                                     <constraint firstItem="kRj-uI-nEH" firstAttribute="centerX" secondItem="f7x-87-nM5" secondAttribute="centerX" id="fJU-U5-Zhi"/>
+                                    <constraint firstItem="kRj-uI-nEH" firstAttribute="top" secondItem="f7x-87-nM5" secondAttribute="top" constant="5" id="rZi-3P-HKh"/>
                                     <constraint firstItem="gxU-jd-oyW" firstAttribute="leading" secondItem="f7x-87-nM5" secondAttribute="leading" constant="24" id="vYV-c6-I5r"/>
                                 </constraints>
                             </view>

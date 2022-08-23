@@ -25,9 +25,10 @@ class FilterView: UIView {
     
     //MARK: Private Method
     private func initialSetup() {
+        topView.addBorder(toSide: .Bottom, withColor: Color.topViewBottomColor, andThickness: 1)
         filterLabel.text = CustomStrings.filterLabel
         filterLabel.font = Font.gilroySemiBold(18)
-        crossButton.setTitle("X", for: .normal)
+        crossButton.setTitle(CustomStrings.crossButtonTitle, for: .normal)
         crossButton.setTitleColor(Color.buttonTextColor, for: .normal)
         cancelButton.setTitle(CustomStrings.clearText, for: .normal)
         cancelButton.setTitleColor(Color.buttonTextColor, for: .normal)

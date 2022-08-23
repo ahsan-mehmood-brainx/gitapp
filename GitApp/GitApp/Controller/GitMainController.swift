@@ -12,7 +12,7 @@ import UIKit
 class GitMainController: BaseViewController {
     
     //MARK: Outlets
-    @IBOutlet var gitMainScreen: GitListView!
+    @IBOutlet var gitMainScreen: GitTableView!
     
     //MARK: Private Members
     private let repoListRequest = RepoListApiManager()
@@ -54,9 +54,6 @@ extension GitMainController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gitRepositories.count
+        gitRepositories.count
     }
 }
-
-
-

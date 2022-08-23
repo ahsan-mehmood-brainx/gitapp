@@ -15,4 +15,5 @@ class Color {
     static let yellowColor = UIColor(hex: 0xF6B233)
     static let filterColor = UIColor(hex: 0x191632)
     static let buttonTextColor = UIColor(hex: 0x14142B)
+    static let topViewBottomColor = UIColor(hex: 0xE8E8EA)
 }

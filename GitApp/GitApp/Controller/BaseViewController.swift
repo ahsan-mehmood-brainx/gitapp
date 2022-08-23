@@ -11,9 +11,9 @@ class BaseViewController: UIViewController {
     
     //MARK: Public Method
     func showAlert(_ error: APIError) {
-        let alert = UIAlertController(title:CustomStrings.errorTitle,
+        let alert = UIAlertController(title: CustomStrings.errorTitle,
                                       message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: CustomStrings.dismiss, style: .cancel, handler: { action in}))
+        alert.addAction(UIAlertAction(title: CustomStrings.dismiss, style: .cancel, handler: nil))
         present(alert,animated: true)
     }
 }

@@ -15,6 +15,7 @@ class CustomStrings {
     static let urlNotFound = "URL not found"
     static let noInternetError = "No Internet Available"
     static let errorOccured = "Some error Occured"
+    static let crossButtonTitle = "X"
     static let filterLabel = "Filters"
     static let clearText = "Clear"
     static let applyText = "Apply"
