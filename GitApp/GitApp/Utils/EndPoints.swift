@@ -8,5 +8,5 @@
 import Foundation
 
 struct EndPoints {
-    static let repoUrlString = "https://api.github.com/repositories"
+    static let repoUrlString = "https://api.github.com/repositorie"
 }

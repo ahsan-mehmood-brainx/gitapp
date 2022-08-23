@@ -18,4 +18,6 @@ class CustomStrings {
     static let filterLabel = "Filters"
     static let clearText = "Clear"
     static let applyText = "Apply"
+    static let errorTitle = "Error"
+    static let dismiss = "Dismiss"
 }
