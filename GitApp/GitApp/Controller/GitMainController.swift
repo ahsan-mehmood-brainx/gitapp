@@ -126,31 +126,13 @@ extension GitMainController: UITableViewDataSource {
 //MARK: UISearchBarDelegate Conformance
 extension GitMainController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count > 0 {
-            isSearchBarContainsText = true
-        } else {
-            isSearchBarContainsText = false
-        }
-        searchRepositories.removeAll()
+        isSearchBarContainsText = searchText.count > 0
         if selectedLanguages.isEmpty {
-            var index = 0
-            for gitRepo in gitRepositories {
-                let gitName = gitRepo.name ?? ""
-                if gitName.lowercased().contains(searchText.lowercased()) {
-                    searchRepositories.insert(gitRepo, at: index)
-                    index += 1
-                }
-            }
+            searchRepositories.removeAll()
+            searchRepositories = gitRepositories.filter{$0.name?.lowercased().contains(searchText.lowercased()) ?? false}
         } else {
             searchAndLanguageRepositories.removeAll()
-            var index = 0
-            for gitRepo in languagesRepositories {
-                let gitName = gitRepo.name ?? ""
-                if gitName.lowercased().contains(searchText.lowercased()) {
-                    searchAndLanguageRepositories.insert(gitRepo, at: index)
-                    index += 1
-                }
-            }
+            searchAndLanguageRepositories = languagesRepositories.filter{$0.name?.lowercased().contains(searchText.lowercased()) ?? false }
         }
         gitMainScreen.gitListView.reloadData()
     }

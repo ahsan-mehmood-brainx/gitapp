@@ -19,12 +19,14 @@ class FilterViewController: BaseViewController {
     @IBOutlet var filterView: FilterView!
     
     //MARK: Action Methods
-    @IBAction func clearButtonClicked() {
+    @IBAction
+    func clearButtonClicked() {
         selectedLanguages.removeAll()
         filterView.languagesTableView.reloadData()
     }
     
-    @IBAction func applyButtonClicked() {
+    @IBAction
+    func applyButtonClicked() {
         selectedLanguageCallBack?(selectedLanguages)
         popViewController()
     }
@@ -51,12 +53,7 @@ class FilterViewController: BaseViewController {
         filterView.languagesTableView.delegate = self
     }
     private func findIndex(_ stringArray: [String], _ givenString: String) -> Int? {
-        for index in 0..<stringArray.count {
-            if stringArray[index] == givenString {
-                return index
-            }
-        }
-        return nil
+        stringArray.firstIndex(where: {$0 == givenString})
     }
 }
 
