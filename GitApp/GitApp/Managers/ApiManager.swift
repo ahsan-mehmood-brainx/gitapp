@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+//MARK: Protocol
 protocol HTTPRequest {
     var endPoint: URL? { get }
     var method: HTTPMethod { get }

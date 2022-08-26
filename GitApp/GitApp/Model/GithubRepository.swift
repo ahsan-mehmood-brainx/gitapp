@@ -12,6 +12,7 @@ struct GitRepository: Mappable {
     var fullName: String?
     var id: Int?
     var gitOwner: GithubOwner?
+    var language: String?
     init?(map: Map) {
     }
     mutating func mapping(map: Map) {

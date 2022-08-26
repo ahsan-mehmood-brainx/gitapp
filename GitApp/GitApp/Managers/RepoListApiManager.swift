@@ -20,7 +20,13 @@ class RepoListApiManager {
                     completion(.failure(APIError(message: CustomStrings.errorOccured)))
                     return
                 }
-                completion(.success(gitRepositoryResult))
+                let repos = gitRepositoryResult.map{ r -> GitRepository in
+                    var repo = r
+                    repo.language = Languages.language.randomElement()
+                    return repo
+                }
+                dump(repos)
+                completion(.success(repos))
             case let .failure(error):
                 completion(.failure(error))
             }

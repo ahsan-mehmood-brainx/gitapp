@@ -10,6 +10,7 @@ class GitTableView: UIView {
     
     //MARK: Outlets
     @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var iconImage: UIImageView!
     @IBOutlet var gitListView: UITableView!
     override func awakeFromNib() {
         super.awakeFromNib()

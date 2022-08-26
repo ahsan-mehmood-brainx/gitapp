@@ -58,8 +58,8 @@ class GitTableViewCell: UITableViewCell {
         let id: Int = gitRepository.gitOwner?.gitOwnerId ?? 0
         let avatorImageString: String =  gitRepository.gitOwner?.avatorUrl ?? CustomStrings.repoLanguage
         let avatorImageUrl = URL(string: avatorImageString)
+        languageLabel.text = gitRepository.language
         avatorImageView.load(url: avatorImageUrl!)
-        languageLabel.text = CustomStrings.repoLanguage
         ownerNameLabel.text = gitRepository.name ?? CustomStrings.notAvailable
         descriptionLabel.text = gitRepository.fullName ?? CustomStrings.notAvailable
         countLabel.text = String(gitRepository.id!) + CustomStrings.count

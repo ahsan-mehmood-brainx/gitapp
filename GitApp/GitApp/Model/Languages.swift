@@ -7,6 +7,6 @@
 
 import Foundation
 
-class Languages {
-    static let language: [String] = ["Python","Swift","php","Ruby","JavaScript"]
+struct Languages {
+    static let language: [String] = ["Python", "Java", "JavaScript", "Swift", "C++", "C#", "R", "Golang", "PHP"]
 }
