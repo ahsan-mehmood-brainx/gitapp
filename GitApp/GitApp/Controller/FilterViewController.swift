@@ -18,14 +18,22 @@ class FilterViewController: BaseViewController {
     //MARK: Outlet
     @IBOutlet var filterView: FilterView!
     
-    //MARK: Action
+    //MARK: Action Methods
     @IBAction func clearButtonClicked() {
         selectedLanguages.removeAll()
         filterView.languagesTableView.reloadData()
     }
+    
     @IBAction func applyButtonClicked() {
         selectedLanguageCallBack?(selectedLanguages)
         popViewController()
+    }
+    
+    @objc
+    private func imageTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            popViewController()
+        }
     }
     
     //MARK: Lifecycle Method
@@ -35,24 +43,27 @@ class FilterViewController: BaseViewController {
     }
     
     //MARK: Private Methods
-    @objc private func imageTapped(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            popViewController()
-        }
-    }
     private func initialSetup() {
-        let cancelImageTapped = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+        let cancelImageTapped = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         filterView.cancelImage.addGestureRecognizer(cancelImageTapped)
         filterView.cancelImage.isUserInteractionEnabled = true
         filterView.languagesTableView.dataSource = self
         filterView.languagesTableView.delegate = self
+    }
+    private func findIndex(_ stringArray: [String], _ givenString: String) -> Int? {
+        for index in 0..<stringArray.count {
+            if stringArray[index] == givenString {
+                return index
+            }
+        }
+        return nil
     }
 }
 
 //MARK: UITableViewDataSource Conformance
 extension FilterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LanguagesTableViewCell", for: indexPath) as! LanguagesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: LanguagesTableViewCell.reusableIdentifier) as! LanguagesTableViewCell
         if selectedLanguages.contains(Languages.language[indexPath.row]) {
             cell.isLanguageSelected.image = UIImage(named: CustomStrings.checkedImage)
         } else {
@@ -74,16 +85,6 @@ extension FilterViewController: UITableViewDataSource {
             selectedLanguages.append(Languages.language[indexPath.row])
         }
         filterView.languagesTableView.reloadData()
-    }
-    
-    //MARK: Private Method
-    private func findIndex(_ stringArray: [String], _ givenString: String) -> Int? {
-        for index in 0..<stringArray.count {
-            if stringArray[index] == givenString {
-                return index
-            }
-        }
-        return nil
     }
 }
 

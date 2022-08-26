@@ -221,12 +221,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3t0-8m-V7i">
+                                <rect key="frame" x="377.5" y="86" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="37d-wt-PCG"/>
+                                    <constraint firstAttribute="height" constant="20" id="gRn-ZA-r5f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AvV-7i-YDM" firstAttribute="leading" secondItem="0S3-1R-rgt" secondAttribute="trailing" constant="14.300000000000001" id="0EE-Xu-uGH"/>
                             <constraint firstItem="0S3-1R-rgt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26.399999999999999" id="4sN-Bk-piB"/>
+                            <constraint firstItem="3t0-8m-V7i" firstAttribute="top" secondItem="AvV-7i-YDM" secondAttribute="top" constant="-10" id="7OO-ab-o1M"/>
+                            <constraint firstItem="AvV-7i-YDM" firstAttribute="trailing" secondItem="3t0-8m-V7i" secondAttribute="trailing" constant="-10" id="7te-UI-Nh0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AvV-7i-YDM" secondAttribute="trailing" constant="26.399999999999999" id="83S-pP-QsI"/>
                             <constraint firstItem="FQj-fd-pGp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26.399999999999999" id="AaT-kj-ge0"/>
                             <constraint firstItem="klx-3W-Bde" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BCv-QG-ceM"/>
@@ -236,11 +248,13 @@
                             <constraint firstItem="klx-3W-Bde" firstAttribute="top" secondItem="0S3-1R-rgt" secondAttribute="bottom" constant="13.199999999999999" id="SbA-cl-ofX"/>
                             <constraint firstItem="AvV-7i-YDM" firstAttribute="height" secondItem="0S3-1R-rgt" secondAttribute="height" id="Um7-vD-i6c"/>
                             <constraint firstItem="FQj-fd-pGp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11.35" id="WiN-3j-wXH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AvV-7i-YDM" secondAttribute="trailing" constant="26.399999999999999" id="YYx-wd-oXG"/>
                             <constraint firstItem="AvV-7i-YDM" firstAttribute="top" secondItem="FQj-fd-pGp" secondAttribute="bottom" constant="19.800000000000001" id="daC-sa-TjW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="klx-3W-Bde" secondAttribute="trailing" id="rjG-bf-PiK"/>
                         </constraints>
                         <connections>
                             <outlet property="gitListView" destination="klx-3W-Bde" id="joO-tM-GbG"/>
+                            <outlet property="iconBadgeLabel" destination="3t0-8m-V7i" id="wA0-AS-zoq"/>
                             <outlet property="iconImage" destination="AvV-7i-YDM" id="51B-sl-pcg"/>
                             <outlet property="searchBar" destination="0S3-1R-rgt" id="SML-Gd-kIe"/>
                         </connections>

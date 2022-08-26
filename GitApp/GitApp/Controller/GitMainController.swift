@@ -35,6 +35,27 @@ class GitMainController: BaseViewController {
             languagesRepositories = repositoryFilteringbyLanguage(gitRepositories, selectedLanguages)
             gitMainScreen.gitListView.reloadData()
         }
+        if !selectedLanguages.isEmpty {
+            gitMainScreen.iconBadgeLabel.text = String(selectedLanguages.count)
+            gitMainScreen.iconBadgeLabel.layer.masksToBounds = true
+            gitMainScreen.iconBadgeLabel.backgroundColor = Color.darkOrange
+            gitMainScreen.iconBadgeLabel.layer.cornerRadius = 10
+            gitMainScreen.iconBadgeLabel.textColor = Color.whiteColor
+        }
+    }
+    
+    //MARK: Action Method
+    @objc
+    private func imageTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            let filterViewController = UIViewController.instantiate(FilterViewController.self, fromStoryboard: .Main)
+            filterViewController.selectedLanguages = selectedLanguages
+            filterViewController.selectedLanguageCallBack =  { result in
+                self.selectedLanguages = result
+            }
+            navigationController?.pushViewController(filterViewController, animated: true)
+            hideNavigationBar()
+        }
     }
     
     //MARK: Private Methods
@@ -47,18 +68,6 @@ class GitMainController: BaseViewController {
             case let .failure(error):
                 self.showAlert(error)
             }
-        }
-    }
-    @objc private func imageTapped(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let filterViewController = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
-            filterViewController.selectedLanguages = selectedLanguages
-            filterViewController.selectedLanguageCallBack =  { result in
-                self.selectedLanguages = result
-            }
-            navigationController?.pushViewController(filterViewController, animated: true)
-            hideNavigationBar()
         }
     }
     private func repositoryFilteringbyLanguage(_ gitRepositoryArray: [GitRepository],
@@ -76,7 +85,7 @@ class GitMainController: BaseViewController {
     private func initialSetup() {
         gitMainScreen.gitListView.dataSource = self
         gitMainScreen.searchBar.delegate = self
-        let iconImageTapped = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+        let iconImageTapped = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         gitMainScreen.iconImage.addGestureRecognizer(iconImageTapped)
         gitMainScreen.iconImage.isUserInteractionEnabled = true
         let searchBarStyle = gitMainScreen.searchBar.value(forKey: "searchField") as? UITextField
@@ -116,8 +125,7 @@ extension GitMainController: UITableViewDataSource {
 
 //MARK: UISearchBarDelegate Conformance
 extension GitMainController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
-    {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 0 {
             isSearchBarContainsText = true
         } else {
