@@ -8,20 +8,10 @@
 import UIKit
 
 extension UIView {
-    enum ViewSide {
-        case Left, Right, Top, Bottom
-    }
-    func addBorder(toSide side: ViewSide,
-                   withColor color: UIColor,
-                   andThickness thickness: CGFloat) {
+    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
-        switch side {
-            case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
-            case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
-            case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
-            case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
-        }
-        layer.addSublayer(border)
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
+        self.layer.addSublayer(border)
     }
 }
