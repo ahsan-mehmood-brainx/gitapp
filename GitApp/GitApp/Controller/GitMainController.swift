@@ -34,13 +34,10 @@ class GitMainController: BaseViewController {
         if !selectedLanguages.isEmpty {
             languagesRepositories = repositoryFilteringbyLanguage(gitRepositories, selectedLanguages)
             gitMainScreen.gitListView.reloadData()
+            showIconBadge()
         }
-        if !selectedLanguages.isEmpty {
-            gitMainScreen.iconBadgeLabel.text = String(selectedLanguages.count)
-            gitMainScreen.iconBadgeLabel.layer.masksToBounds = true
-            gitMainScreen.iconBadgeLabel.backgroundColor = Color.darkOrange
-            gitMainScreen.iconBadgeLabel.layer.cornerRadius = 10
-            gitMainScreen.iconBadgeLabel.textColor = Color.whiteColor
+        else {
+            disableIconBadge()
         }
     }
     
@@ -92,6 +89,17 @@ class GitMainController: BaseViewController {
         searchBarStyle?.clearButtonMode = .never
         gitMainScreen.searchBar.searchTextField.font = Font.gilroyMedium(14)
         searchBarStyle?.textColor = Color.searchBarTextColor
+    }
+    private func showIconBadge() {
+        gitMainScreen.iconBadgeLabel.isHidden = false
+        gitMainScreen.iconBadgeLabel.text = String(selectedLanguages.count)
+        gitMainScreen.iconBadgeLabel.layer.masksToBounds = true
+        gitMainScreen.iconBadgeLabel.backgroundColor = Color.darkOrange
+        gitMainScreen.iconBadgeLabel.layer.cornerRadius = 10
+        gitMainScreen.iconBadgeLabel.textColor = Color.whiteColor
+    }
+    private func disableIconBadge() {
+        gitMainScreen.iconBadgeLabel.isHidden = true
     }
 }
 
