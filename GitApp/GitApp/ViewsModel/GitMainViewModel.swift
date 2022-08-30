@@ -12,12 +12,14 @@ class GitMainViewModel {
     //MARK: Public Properties
     let repoListRequest = RepoListApiManager()
     var selectedLanguages: [String] = []
-    var gitRepositories = [GitRepository]()
-    var searchRepositories: [GitRepository] = []
-    var languagesRepositories: [GitRepository]!
-    var searchAndLanguageRepositories = [GitRepository]()
+    var filteredRepositories = [GitRepository]()
+    private var gitRepositories = [GitRepository]() {
+        didSet {
+            filterRepositories(with: "")
+        }
+    }
     
-    //MARK: Public Method
+    //MARK: Public Methods
     func fetchData(completion: @escaping (String?) -> Void) {
         repoListRequest.loadRepositories {response in
             switch response {
@@ -29,8 +31,6 @@ class GitMainViewModel {
             }
         }
     }
-    
-    //MARK: Private Method
     func repositoryFilteringbyLanguage(_ gitRepositoryArray: [GitRepository],
                                                _ languagesArray: [String])-> [GitRepository] {
         var repoFilter: [GitRepository] = []
@@ -43,13 +43,38 @@ class GitMainViewModel {
         }
         return repoFilter
     }
-    func isLanguageSelected()->Bool {
-        if !selectedLanguages.isEmpty {
-            languagesRepositories =  repositoryFilteringbyLanguage(gitRepositories, selectedLanguages)
-            return true
+    
+    func filterLanguages() -> [GitRepository] {
+        var filteredRepositories = [GitRepository]()
+        guard !selectedLanguages.isEmpty else {
+            return gitRepositories
         }
-        else {
-            return false
+        for repo in gitRepositories {
+            guard let name = repo.name,
+                  let repoLanguage = repo.language?.lowercased() else {
+                continue
+            }
+            if selectedLanguages.contains(where: { $0.lowercased() == repoLanguage }) {
+                filteredRepositories.append(repo)
+            }
+        }
+        return filteredRepositories
+    }
+    
+    func filterRepositories(with text: String) {
+        filteredRepositories.removeAll()
+        let languageFiltered = filterLanguages()
+        guard !text.isEmpty else {
+            filteredRepositories = languageFiltered
+            return
+        }
+        for repo in languageFiltered {
+            guard let name = repo.name?.lowercased() else {
+                continue
+            }
+            if name.contains(text.lowercased()) {
+                filteredRepositories.append(repo)
+            }
         }
     }
 }
