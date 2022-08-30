@@ -11,17 +11,14 @@ import UIKit
 
 class GitMainController: BaseViewController {
     
-    //MARK: Outlets
+    //MARK: Outlet
     @IBOutlet var gitMainScreen: GitTableView!
     
-    //MARK: Private Members
-    private let repoListRequest = RepoListApiManager()
+    //MARK: Private Property
     private var isSearchBarContainsText: Bool = false
-    private var selectedLanguages: [String] = []
-    private var gitRepositories = [GitRepository]()
-    private var searchRepositories: [GitRepository] = []
-    private var languagesRepositories: [GitRepository]!
-    private var searchAndLanguageRepositories = [GitRepository]()
+    
+    //MARK: Public Property
+    let gitMainViewModel = GitMainViewModel()
     
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
@@ -31,8 +28,8 @@ class GitMainController: BaseViewController {
         }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !selectedLanguages.isEmpty {
-            languagesRepositories = repositoryFilteringbyLanguage(gitRepositories, selectedLanguages)
+        if !gitMainViewModel.selectedLanguages.isEmpty {
+            gitMainViewModel.languagesRepositories =  gitMainViewModel.repositoryFilteringbyLanguage(gitMainViewModel.gitRepositories, gitMainViewModel.selectedLanguages)
             gitMainScreen.gitListView.reloadData()
             showIconBadge()
         }
@@ -46,9 +43,9 @@ class GitMainController: BaseViewController {
     private func imageTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             let filterViewController = UIViewController.instantiate(FilterViewController.self, fromStoryboard: .Main)
-            filterViewController.selectedLanguages = selectedLanguages
-            filterViewController.selectedLanguageCallBack =  { result in
-                self.selectedLanguages = result
+            filterViewController.filterViewModel.selectedLanguages = gitMainViewModel.selectedLanguages
+            filterViewController.filterViewModel.selectedLanguageCallBack =  { result in
+                self.gitMainViewModel.selectedLanguages = result
             }
             navigationController?.pushViewController(filterViewController, animated: true)
             hideNavigationBar()
@@ -57,27 +54,13 @@ class GitMainController: BaseViewController {
     
     //MARK: Private Methods
     private func fetchData() {
-        repoListRequest.loadRepositories {response in
-            switch response {
-            case let .success(value):
-                self.gitRepositories = value
+        gitMainViewModel.fetchData{ response in
+            guard let message = response else {
                 self.gitMainScreen.gitListView.reloadData()
-            case let .failure(error):
-                self.showAlert(error)
+                return 
             }
+            self.showAlert(withMessage: message)
         }
-    }
-    private func repositoryFilteringbyLanguage(_ gitRepositoryArray: [GitRepository],
-                                               _ languagesArray: [String])-> [GitRepository] {
-        var repoFilter: [GitRepository] = []
-        var index = 0
-        for repo in gitRepositoryArray {
-            if languagesArray.contains(repo.language ?? "") {
-                repoFilter.insert(repo, at: index)
-                index += 1
-            }
-        }
-        return repoFilter
     }
     private func initialSetup() {
         gitMainScreen.gitListView.dataSource = self
@@ -92,7 +75,7 @@ class GitMainController: BaseViewController {
     }
     private func showIconBadge() {
         gitMainScreen.iconBadgeLabel.isHidden = false
-        gitMainScreen.iconBadgeLabel.text = String(selectedLanguages.count)
+        gitMainScreen.iconBadgeLabel.text = String(gitMainViewModel.selectedLanguages.count)
         gitMainScreen.iconBadgeLabel.layer.masksToBounds = true
         gitMainScreen.iconBadgeLabel.backgroundColor = Color.darkOrange
         gitMainScreen.iconBadgeLabel.layer.cornerRadius = 10
@@ -107,26 +90,26 @@ class GitMainController: BaseViewController {
 extension GitMainController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GitTableViewCell", for: indexPath) as! GitTableViewCell
-        if isSearchBarContainsText, selectedLanguages.isEmpty {
-            cell.setCellData(searchRepositories[indexPath.row])
-        } else if isSearchBarContainsText, !selectedLanguages.isEmpty {
-            cell.setCellData(searchAndLanguageRepositories[indexPath.row])
-        } else if !isSearchBarContainsText, selectedLanguages.isEmpty {
-            cell.setCellData(gitRepositories[indexPath.row])
+        if isSearchBarContainsText, gitMainViewModel.selectedLanguages.isEmpty {
+            cell.setCellData(gitMainViewModel.searchRepositories[indexPath.row])
+        } else if isSearchBarContainsText, !gitMainViewModel.selectedLanguages.isEmpty {
+            cell.setCellData(gitMainViewModel.searchAndLanguageRepositories[indexPath.row])
+        } else if !isSearchBarContainsText, gitMainViewModel.selectedLanguages.isEmpty {
+            cell.setCellData(gitMainViewModel.gitRepositories[indexPath.row])
         } else {
-            cell.setCellData(languagesRepositories[indexPath.row])
+            cell.setCellData(gitMainViewModel.languagesRepositories[indexPath.row])
         }
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearchBarContainsText, selectedLanguages.isEmpty {
-            return searchRepositories.count
-        } else if isSearchBarContainsText, !selectedLanguages.isEmpty {
-            return searchAndLanguageRepositories.count
-        } else if !isSearchBarContainsText, selectedLanguages.isEmpty {
-            return gitRepositories.count
+        if isSearchBarContainsText, gitMainViewModel.selectedLanguages.isEmpty {
+            return gitMainViewModel.searchRepositories.count
+        } else if isSearchBarContainsText, !gitMainViewModel.selectedLanguages.isEmpty {
+            return gitMainViewModel.searchAndLanguageRepositories.count
+        } else if !isSearchBarContainsText, gitMainViewModel.selectedLanguages.isEmpty {
+            return gitMainViewModel.gitRepositories.count
         } else {
-            return languagesRepositories.count
+            return gitMainViewModel.languagesRepositories.count
         }
     }
 }
@@ -135,12 +118,12 @@ extension GitMainController: UITableViewDataSource {
 extension GitMainController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearchBarContainsText = searchText.count > 0
-        if selectedLanguages.isEmpty {
-            searchRepositories.removeAll()
-            searchRepositories = gitRepositories.filter{$0.name?.lowercased().contains(searchText.lowercased()) ?? false}
+        if gitMainViewModel.selectedLanguages.isEmpty {
+            gitMainViewModel.searchRepositories.removeAll()
+            gitMainViewModel.searchRepositories = gitMainViewModel.gitRepositories.filter{$0.name?.lowercased().contains(searchText.lowercased()) ?? false}
         } else {
-            searchAndLanguageRepositories.removeAll()
-            searchAndLanguageRepositories = languagesRepositories.filter{$0.name?.lowercased().contains(searchText.lowercased()) ?? false }
+            gitMainViewModel.searchAndLanguageRepositories.removeAll()
+            gitMainViewModel.searchAndLanguageRepositories = gitMainViewModel.languagesRepositories.filter{$0.name?.lowercased().contains(searchText.lowercased()) ?? false }
         }
         gitMainScreen.gitListView.reloadData()
     }

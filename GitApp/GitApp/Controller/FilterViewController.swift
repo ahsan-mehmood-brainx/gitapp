@@ -9,11 +9,8 @@ import UIKit
 
 class FilterViewController: BaseViewController {
     
-    //MARK: Public Data Member
-    var selectedLanguages: [String] = []
-    
-    //MARK: Closure
-    var selectedLanguageCallBack: (([String])->Void)?
+    //MARK: Property
+    let filterViewModel = FilterViewModel()
     
     //MARK: Outlet
     @IBOutlet var filterView: FilterView!
@@ -21,13 +18,13 @@ class FilterViewController: BaseViewController {
     //MARK: Action Methods
     @IBAction
     func clearButtonClicked() {
-        selectedLanguages.removeAll()
+        filterViewModel.removeAllSelectedLanguages()
         filterView.languagesTableView.reloadData()
     }
     
     @IBAction
     func applyButtonClicked() {
-        selectedLanguageCallBack?(selectedLanguages)
+        filterViewModel.selectedLanguageCallBack?(filterViewModel.selectedLanguages)
         popViewController()
     }
     
@@ -52,35 +49,26 @@ class FilterViewController: BaseViewController {
         filterView.languagesTableView.dataSource = self
         filterView.languagesTableView.delegate = self
     }
-    private func findIndex(_ stringArray: [String], _ givenString: String) -> Int? {
-        stringArray.firstIndex(where: {$0 == givenString})
-    }
+    
 }
 
 //MARK: UITableViewDataSource Conformance
 extension FilterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LanguagesTableViewCell.reusableIdentifier) as! LanguagesTableViewCell
-        if selectedLanguages.contains(Languages.language[indexPath.row]) {
+        if filterViewModel.selectedLanguages.contains(filterViewModel.languageAtGivenIndex(indexPath.row)) {
             cell.isLanguageSelected.image = UIImage(named: CustomStrings.checkedImage)
         } else {
             cell.isLanguageSelected.image = UIImage(named: CustomStrings.unCheckedImage)
         }
-        cell.languageLabelView.text = Languages.language[indexPath.row]
+        cell.languageLabelView.text = filterViewModel.languageAtGivenIndex(indexPath.row)
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Languages.language.count
+        filterViewModel.languagesCount
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedLanguages.contains(Languages.language[indexPath.row]) {
-            if let index = findIndex(selectedLanguages, Languages.language[indexPath.row]) {
-                selectedLanguages.remove(at: index)
-            }
-        }
-        else {
-            selectedLanguages.append(Languages.language[indexPath.row])
-        }
+        filterViewModel.cellSelect(cellIndex: indexPath.row)
         filterView.languagesTableView.reloadData()
     }
 }
@@ -91,7 +79,7 @@ extension FilterViewController: UITableViewDelegate {
         let titleView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
         let label = UILabel()
         label.frame = CGRect.init(x: 0, y: 0, width: titleView.frame.width, height: titleView.frame.height)
-        label.text = CustomStrings.languagestableViewTitle
+        label.text = CustomStrings.languagesTableViewTitle
         label.font = Font.gilroySemiBold(16)
         titleView.addSubview(label)
         return titleView

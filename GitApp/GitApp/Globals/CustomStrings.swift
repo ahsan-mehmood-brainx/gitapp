@@ -21,7 +21,7 @@ class CustomStrings {
     static let applyText = "Apply"
     static let errorTitle = "Error"
     static let dismiss = "Dismiss"
-    static let languagestableViewTitle = "Languages"
+    static let languagesTableViewTitle = "Languages"
     static let checkedImage = "checkCircle"
     static let unCheckedImage = "unCheckCircle"
 }

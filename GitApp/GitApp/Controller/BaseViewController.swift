@@ -10,9 +10,9 @@ import UIKit
 class BaseViewController: UIViewController {
     
     //MARK: Public Methods
-    func showAlert(_ error: APIError) {
+    func showAlert(withMessage error: String) {
         let alert = UIAlertController(title: CustomStrings.errorTitle,
-                                      message: error.localizedDescription,
+                                      message: error,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: CustomStrings.dismiss, style: .cancel, handler: nil))
         present(alert,animated: true)
